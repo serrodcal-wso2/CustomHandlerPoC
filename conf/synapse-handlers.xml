@@ -1,0 +1,3 @@
+<handlers>
+    <handler name="LoggerCustomHandler" class="com.serrodcal.esb.custom.handler.LoggerCustomHandler"/>
+</handlers>
