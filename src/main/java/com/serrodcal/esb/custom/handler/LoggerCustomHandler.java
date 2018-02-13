@@ -5,20 +5,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.synapse.AbstractSynapseHandler;
 import org.apache.synapse.MessageContext;
-
 import org.apache.synapse.core.axis2.Axis2MessageContext;
 
 import java.util.TreeMap;
-/*import brave.Tracing;
-import brave.opentracing.BraveTracer;
-import com.google.common.collect.ImmutableSet;
-import io.opentracing.Tracer;
-import zipkin2.reporter.AsyncReporter;
-import zipkin2.reporter.Reporter;
-import zipkin2.reporter.Sender;
-import zipkin2.reporter.okhttp3.OkHttpSender;*/
-
-//import java.awt.*;
 
 public class LoggerCustomHandler extends AbstractSynapseHandler {
 
@@ -143,16 +132,3 @@ public class LoggerCustomHandler extends AbstractSynapseHandler {
     }
 
 }
-
-
-/*this.log.error("zipkin");
-        Sender sender = OkHttpSender.create("http://zipkin:9411/api/v2/spans");
-        Reporter spanReporter = AsyncReporter.create(sender);
-        Tracing braveTracing = Tracing.newBuilder().localServiceName("formatter").spanReporter(spanReporter).build();
-        Tracer tracer = BraveTracer.create(braveTracing);
-        ImmutableSet<Color> google_color = ImmutableSet.<Color>builder()
-                        .add(new Color(0, 191, 255))
-                        .build();
-        this.log.error(google_color.toString());
-        this.log.error(messageContext.getContextEntries().toString());
-        this.log.error("handleRequestInFlow");*/
