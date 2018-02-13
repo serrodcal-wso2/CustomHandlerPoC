@@ -1,5 +1,7 @@
 # Custom Handler PoC
 
+[![Build Status](https://travis-ci.org/serrodcal/CustomHandlerPoC.svg?branch=master)](https://travis-ci.org/serrodcal/CustomHandlerPoC)
+
 This project consists of a Proof of Concept about extending ESB by a custom synapse handler. 
 In this case, the handler only log info about the request/response.
 
