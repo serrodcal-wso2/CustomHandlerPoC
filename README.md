@@ -31,6 +31,30 @@ curl -i -X POST \
  'http://localhost:8280/echo/echo'
 ```
 
+## Custom logs
+
+This artifacts has it own logger. Log in wso2carbon.log (root logger) and log in customer_logger.log files.
+
+In `conf/log4j.properties`, is the configuration:
+
+```
+log4j.rootLogger=ERROR, CARBON_CONSOLE, CARBON_LOGFILE, CARBON_MEMORY, CARBON_SYS_LOG, ERROR_LOGFILE, CUSTOM_LOGGER
+
+...
+
+log4j.logger.CUSTOM_LOGGER=INFO
+
+...
+
+# Appender config to send LoggerCustomHandler logs to new file.
+log4j.appender.CUSTOM_LOGGER = org.apache.log4j.RollingFileAppender
+log4j.appender.CUSTOM_LOGGER.layout = org.apache.log4j.PatternLayout
+log4j.appender.CUSTOM_LOGGER.layout.ConversionPattern = %d{ISO8601} %-5p %c ~ %m%n
+log4j.appender.CUSTOM_LOGGER.File = ${carbon.home}/repository/logs/custom_logger.log
+log4j.appender.CUSTOM_LOGGER.Threshold = INFO
+log4j.appender.CUSTOM_LOGGER.Append=true
+```
+
 ## Documentation
 
 * [Apache Felix Bundle](http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html).
