@@ -29,4 +29,7 @@ curl -i -X POST \
  'http://localhost:8280/echo/echo'
 ```
 
+## Documentation
 
+* [Apache Felix Bundle](http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html).
+* [WSO2 Extending Synapse](https://docs.wso2.com/display/ESB490/Writing+a+Synapse+Handler).
