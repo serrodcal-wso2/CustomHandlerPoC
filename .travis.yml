@@ -1,0 +1,3 @@
+language: java
+build: mvn install -DskipTests=true
+test: mvn test
