@@ -11,7 +11,11 @@ import java.util.TreeMap;
 
 public class LoggerCustomHandler extends AbstractSynapseHandler {
 
-    private static final Log log = LogFactory.getLog(LoggerCustomHandler.class);
+    private static final Log log = LogFactory.getLog("CUSTOM_LOGGER");//  getLog(LoggerCustomHandler.class);
+
+    public static final String API = "API";
+    public static final String IP = "IP";
+    public static final String X_ING_TRC_REQUEST = "Request";
 
     @Override
     public boolean handleRequestInFlow(MessageContext messageContext) {
@@ -22,12 +26,12 @@ public class LoggerCustomHandler extends AbstractSynapseHandler {
             StringBuilder log_statement = new StringBuilder();
 
             log_statement.append("*** INSIDE = {")
-                    .append("[IP:").append(headers_map.get("X-Forwarded-For")).append("],")
-                    .append("[X-ING-TRC-REQUEST:").append(headers_map.get("X-ING-TRC-REQUEST")).append("],")
+                    .append("[IP:").append(headers_map.get("X-Forwarded-For")).append("],[")
+                    .append(X_ING_TRC_REQUEST).append(":").append(headers_map.get(X_ING_TRC_REQUEST)).append("],")
                     .append("[API:").append(this.getTo(messageContext)).append("],")
                     .append("[UUID:").append(messageContext.getMessageID()).append("]").append("}");
 
-            this.log.error(log_statement.toString());
+            this.log.info(log_statement.toString());
         } else {
             this.log.error("Something was wrong, not be able to access to headers :(.");
         }
@@ -45,12 +49,12 @@ public class LoggerCustomHandler extends AbstractSynapseHandler {
 
             log_statement.append("*** SEND TO ENDPOINT = {")
                     .append("[IP:").append(headers_map.get("X-Forwarded-For")).append("],")
-                    .append("[X-ING-TRC-REQUEST:").append(headers_map.get("X-ING-TRC-REQUEST")).append("],")
+                    .append("[" + X_ING_TRC_REQUEST + ":").append(headers_map.get(X_ING_TRC_REQUEST)).append("],")
                     .append("[API:").append(this.getTo(messageContext)).append("],")
                     .append("[UUID:").append(messageContext.getMessageID()).append("],")
                     .append("[To:").append(messageContext.getTo().getAddress()).append("]").append("}");
 
-            this.log.error(log_statement.toString());
+            this.log.info(log_statement.toString());
         } else {
             this.log.error("Something was wrong, not be able to access to headers :(.");
         }
@@ -68,12 +72,12 @@ public class LoggerCustomHandler extends AbstractSynapseHandler {
 
             log_statement.append("*** RECEIVED FROM ENDPOINT = {")
                     .append("[IP:").append(headers_map.get("X-Forwarded-For")).append("],")
-                    .append("[X-ING-TRC-REQUEST:").append(headers_map.get("X-ING-TRC-REQUEST")).append("],")
+                    .append("[" + X_ING_TRC_REQUEST + ":").append(headers_map.get(X_ING_TRC_REQUEST)).append("],")
                     .append("[API:").append(this.getFrom(messageContext)).append("],")
                     .append("[UUID:").append(messageContext.getMessageID()).append("],")
                     .append("[From:").append(messageContext.getFrom().getAddress()).append("]").append("}");
 
-            this.log.error(log_statement.toString());
+            this.log.info(log_statement.toString());
         } else {
             this.log.error("Something was wrong, not be able to access to headers :(.");
         }
@@ -91,11 +95,11 @@ public class LoggerCustomHandler extends AbstractSynapseHandler {
 
             log_statement.append("*** OUTSIDE = {")
                     .append("[IP:").append(headers_map.get("X-Forwarded-For")).append("],")
-                    .append("[X-ING-TRC-REQUEST:").append(headers_map.get("X-ING-TRC-REQUEST")).append("],")
+                    .append("[" + X_ING_TRC_REQUEST + ":").append(headers_map.get(X_ING_TRC_REQUEST)).append("],")
                     .append("[API:").append(this.getFrom(messageContext)).append("],")
                     .append("[UUID:").append(messageContext.getMessageID()).append("]").append("}");
 
-            this.log.error(log_statement.toString());
+            this.log.info(log_statement.toString());
         } else {
             this.log.error("Something was wrong, not be able to access to headers :(.");
         }

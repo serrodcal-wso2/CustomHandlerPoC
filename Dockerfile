@@ -10,6 +10,7 @@ RUN apt-get update && \
 
 ADD ./api/Echo.xml /opt/wso2esb-5.0.0/repository/deployment/server/synapse-configs/default/api/Echo.xml
 ADD ./target/loggerCustomHandler-1.0.0.jar /opt/wso2esb-5.0.0/repository/components/dropins/loggerCustomHandler-1.0.0.jar
+ADD ./conf/log4j.properties /opt/wso2esb-5.0.0/repository/conf/log4j.properties
 ADD ./conf/synapse-handlers.xml /opt/wso2esb-5.0.0/repository/conf/synapse-handlers.xml
 ADD ./bin/wso2server.sh /opt/wso2esb-5.0.0/bin/wso2server.sh
 
