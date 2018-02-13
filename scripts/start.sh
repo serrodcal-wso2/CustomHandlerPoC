@@ -1,3 +1,4 @@
+mvn clean install
 docker rm -f $(docker ps -a -q)
 docker rmi -f $(docker images -q)
 docker build -t serrodcal/wso2esb-5.0.0 .
